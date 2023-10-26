@@ -1,8 +1,8 @@
 package it.unibs.it;
 
 public class Factors {
-    private long a;
-    private long b;
+    private final long a;
+    private final long b;
 
     public Factors(long a, long b) {
         this.a = a;
