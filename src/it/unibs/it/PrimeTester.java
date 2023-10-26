@@ -1,6 +1,15 @@
 package it.unibs.it;
 
-public class PrimeTester {
+import java.util.concurrent.Callable;
+
+public class PrimeTester implements Callable<Long> {
+
+    private long start, end, nprimes;
+
+    public PrimeTester(long start, long end){
+        this.start = start;
+        this.end = end;
+    }
     static boolean isPrime(long n){
         if (n <= 1){
             return false;
@@ -30,5 +39,14 @@ public class PrimeTester {
                 return factors = new Factors(i, n/i);
         }
         return null;
+    }
+
+    @Override
+    public Long call() throws Exception {
+        long count = 0;
+        for (long i = start; i < end; i++) {
+            if (isPrime(i)) count++;
+        }
+        return count;
     }
 }
